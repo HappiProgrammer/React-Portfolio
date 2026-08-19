@@ -1,8 +1,7 @@
 import './index.scss'
 import LogoS from '../../../assets/images/logo-s.png'
 import { useRef, useEffect } from 'react'
-import gsap from 'gsap-trial'
-import DrawSVGPlugin from 'gsap-trial/DrawSVGPlugin'
+import gsap from 'gsap'
 
 const Logo = () => {
     const bgRef = useRef()
@@ -10,7 +9,12 @@ const Logo = () => {
     const solidLogoRef = useRef()
 
     useEffect(() => {
-        gsap.registerPlugin(DrawSVGPlugin)
+        const path = outlineLogoRef.current
+        if (!path) return
+
+        const length = path.getTotalLength()
+        path.style.strokeDasharray = `${length} ${length}`
+        path.style.strokeDashoffset = `${length}`
 
         const ctx = gsap.context(() => {
             gsap
@@ -19,17 +23,11 @@ const Logo = () => {
                     duration: 0.8,
                     opacity: 1,
                 })
-                .fromTo(
-                    outlineLogoRef.current,
-                    {
-                        drawSVG: '0%',
-                    },
-                    {
-                        drawSVG: '100%',
-                        duration: 3.5,
-                        ease: 'power2.inOut',
-                    }
-                )
+                .to(path, {
+                    strokeDashoffset: 0,
+                    duration: 3.5,
+                    ease: 'power2.inOut',
+                })
 
             gsap.fromTo(
                 solidLogoRef.current,
