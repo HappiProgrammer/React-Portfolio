@@ -40,7 +40,7 @@ const Sidebar = () => (
                 </a>
             </li>
             <li>
-                <a target="_blank" rel="noreferrer" href="skype:live:happigeniune">
+                <a target="_blank" rel="noreferrer" href="https://skype.com/happigeniune">
                     <FontAwesomeIcon icon={faSkype} color="#4d4d4e" /> 
                 </a>
             </li>
