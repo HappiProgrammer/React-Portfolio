@@ -19,6 +19,8 @@ const Contact = () => {
     const [letterClass, setLetterClass] = useState('text-animate')
     const [position, setPosition] = useState([4.155, 9.2415])
     const [isLive, setIsLive] = useState(false)
+    const [isSending, setIsSending] = useState(false)
+    const [toast, setToast] = useState({ show: false, message: '', type: '' })
     const form = useRef()
 
     useEffect(() => {
@@ -51,6 +53,7 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault()
+        setIsSending(true)
 
         emailjs
             .sendForm(
@@ -61,11 +64,15 @@ const Contact = () => {
             )
             .then(
                 () => {
-                    alert('Message successfully sent!')
-                    window.location.reload(false)
+                    setIsSending(false)
+                    setToast({ show: true, message: '🚀 Message sent successfully! I will reply soon.', type: 'success' })
+                    if (form.current) form.current.reset()
+                    setTimeout(() => setToast({ show: false, message: '', type: '' }), 5000)
                 },
                 () => {
-                    alert('Failed to send the message, please try again')
+                    setIsSending(false)
+                    setToast({ show: true, message: '⚠️ Failed to send message. Please try again or email directly.', type: 'error' })
+                    setTimeout(() => setToast({ show: false, message: '', type: '' }), 5000)
                 }
             )
     }
@@ -102,12 +109,24 @@ const Contact = () => {
                                     <textarea placeholder="Message" name="message" required></textarea>
                                 </li>
                                 <li>
-                                    <input type="submit" className="flat-button" value="SEND" />
+                                    <input 
+                                        type="submit" 
+                                        className="flat-button" 
+                                        value={isSending ? "SENDING..." : "SEND"} 
+                                        disabled={isSending} 
+                                    />
                                 </li>
                             </ul>
                         </form>
                     </div>
                 </div>
+
+                {toast.show && (
+                    <div className={`contact-toast ${toast.type}`}>
+                        {toast.message}
+                    </div>
+                )}
+
                 <div className="info-map">
                     Happi Geniune,
                     <br />

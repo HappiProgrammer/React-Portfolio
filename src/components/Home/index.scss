@@ -62,6 +62,32 @@
         animation: fadeIn 1s 1.8s backwards;
     }
 
+    .cta-buttons {
+        display: flex;
+        gap: 16px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+
+        .flat-button {
+            margin-top: 0;
+            float: none;
+            display: inline-block;
+        }
+
+        .secondary-button {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+
+            &:hover {
+                background: #ffffff;
+                color: #022c43;
+                border-color: #ffffff;
+            }
+        }
+    }
+
     .flat-button {
         color: #ffd700;
         font-size: 14px;
@@ -75,6 +101,7 @@
         float: left;
         animation: fadeIn 1s 1.8s backwards;
         white-space: nowrap;
+        transition: all 0.3s ease;
 
         &:hover {
             background: #ffd700;

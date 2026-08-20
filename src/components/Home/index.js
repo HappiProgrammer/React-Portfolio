@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Loader from 'react-loaders'
 import LogoTitle from '../../assets/images/logo-title.png'
+import ResumePDF from '../../assets/Happi_CV.pdf'
 import AnimatedLetters from '../AnimatedLetters'
 import Logo from './Logo'
 import './index.scss'
@@ -41,10 +42,11 @@ const Home = () => {
                     idx={22} 
                 />
                 </h1>
-                <h2>Fullstack Developer / Junior Data Scientist
-                    / YouTuber
-                </h2>
-                <Link to="/contact" className='flat-button'>CONTACT ME</Link>
+                <h2>AI Builder / Full-Stack Engineer / LLM & Automation Developer</h2>
+                <div className="cta-buttons">
+                    <Link to="/contact" className='flat-button'>CONTACT ME</Link>
+                    <a href={ResumePDF} download="Happi_Resume.pdf" className='flat-button secondary-button'>RESUME</a>
+                </div>
             </div>
             <Logo />
         </div>

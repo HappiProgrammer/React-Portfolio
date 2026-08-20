@@ -1,0 +1,271 @@
+@import 'loaders.css/loaders.min.css';
+
+.portfolio-page {
+    padding-left: 100px;
+    padding-right: 40px;
+    width: 100%;
+    position: relative;
+    height: auto;
+    min-height: 100%;
+    padding-top: 40px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+
+    h1.page-title {
+        margin-left: 15px;
+        margin-bottom: 30px;
+        font-size: 56px;
+        font-family: 'Coolvetica', sans-serif;
+        color: #fff;
+        font-weight: 400;
+        position: relative;
+
+        &::before {
+            content: '<h1>';
+            font-family: 'La Belle Aurore';
+            color: #ffd700;
+            font-size: 18px;
+            position: absolute;
+            margin-top: -35px;
+            left: -15px;
+            opacity: 0.6;
+        }
+
+        &::after {
+            content: '<h1/>';
+            font-family: 'La Belle Aurore';
+            color: #ffd700;
+            font-size: 18px;
+            position: absolute;
+            margin-top: 15px;
+            margin-left: 20px;
+            opacity: 0.6;
+        }
+    }
+
+    .images-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+        padding: 0 15px 50px 15px;
+
+        .image-box {
+            position: relative;
+            height: 270px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            transition: all 0.35s ease;
+            animation: fadeIn 1s ease backwards;
+            cursor: pointer;
+
+            // Live Loader Center Stage
+            .card-loader-wrapper {
+                position: absolute;
+                top: 52%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 1;
+                pointer-events: none;
+                z-index: 1;
+
+                .loader-inner {
+                    transform: scale(0.85);
+
+                    div {
+                        background-color: #ffd700;
+                        border-color: #ffd700;
+                    }
+                }
+
+                .pacman > div:first-of-type,
+                .pacman > div:nth-child(2) {
+                    border-top-color: #ffd700;
+                    border-left-color: #ffd700;
+                    border-bottom-color: #ffd700;
+                }
+
+                .loader-label {
+                    margin-top: 14px;
+                    font-family: monospace;
+                    font-size: 10px;
+                    letter-spacing: 2px;
+                    color: rgba(255, 215, 0, 0.8);
+                    text-transform: uppercase;
+                }
+            }
+
+            // Top preview header
+            .card-header-banner {
+                position: absolute;
+                top: 18px;
+                left: 20px;
+                right: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                transition: opacity 0.3s ease;
+                z-index: 1;
+
+                .project-idx {
+                    font-family: monospace;
+                    font-size: 13px;
+                    color: #ffd700;
+                    letter-spacing: 1px;
+                }
+
+                .card-title-preview {
+                    margin: 0;
+                    font-family: 'Coolvetica', sans-serif;
+                    font-size: 17px;
+                    font-weight: 400;
+                    color: #ffffff;
+                    letter-spacing: 0.5px;
+                }
+            }
+
+            // Full content details (Revealed on hover)
+            .content {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgba(2, 44, 67, 0.96);
+                backdrop-filter: blur(8px);
+                padding: 22px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                opacity: 0;
+                transform: translateY(8px);
+                transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 2;
+
+                .title {
+                    font-size: 20px;
+                    color: #fff;
+                    font-family: 'Coolvetica', sans-serif;
+                    font-weight: 400;
+                    margin: 0 0 8px 0;
+                    letter-spacing: 0.5px;
+                }
+
+                .description {
+                    font-size: 13px;
+                    color: #d0d0d0;
+                    font-family: sans-serif;
+                    line-height: 19px;
+                    margin: 0;
+                    flex-grow: 1;
+                }
+
+                .tags-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 6px;
+                    margin: 12px 0 14px 0;
+
+                    .tag-pill {
+                        font-family: monospace;
+                        font-size: 10.5px;
+                        color: #ffd700;
+                        background: rgba(255, 215, 0, 0.08);
+                        border: 1px solid rgba(255, 215, 0, 0.25);
+                        padding: 2px 7px;
+                        border-radius: 3px;
+                    }
+                }
+
+                .btn-row {
+                    display: flex;
+                    gap: 10px;
+
+                    .btn {
+                        height: 34px;
+                        padding: 0 14px;
+                        border-radius: 4px;
+                        font-size: 12px;
+                        font-family: sans-serif;
+                        font-weight: 600;
+                        letter-spacing: 1px;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        transition: all 0.3s ease;
+
+                        &.btn-demo {
+                            background: #ffd700;
+                            color: #022c43;
+                            border: 1px solid #ffd700;
+
+                            &:hover {
+                                background: #ffffff;
+                                border-color: #ffffff;
+                                color: #022c43;
+                            }
+                        }
+
+                        &.btn-code {
+                            background: transparent;
+                            color: #ffffff;
+                            border: 1px solid rgba(255, 255, 255, 0.35);
+
+                            &:hover {
+                                border-color: #ffd700;
+                                color: #ffd700;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Interactive Hover: Loader disappears & full card content appears
+            &:hover {
+                transform: translateY(-6px);
+                border-color: #ffd700;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.25);
+
+                .card-loader-wrapper {
+                    opacity: 0;
+                    transform: translate(-50%, -65%) scale(0.7);
+                }
+
+                .card-header-banner {
+                    opacity: 0;
+                }
+
+                .content {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .portfolio-page {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 100%;
+
+        h1.page-title {
+            margin-left: 0;
+            font-size: 42px;
+        }
+
+        .images-container {
+            padding: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+}

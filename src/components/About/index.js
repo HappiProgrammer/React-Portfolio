@@ -5,6 +5,8 @@ import Loader from 'react-loaders'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngular, faCss3, faGitAlt, faHtml5, faJsSquare, faReact } from '@fortawesome/free-brands-svg-icons'
 
+import ResumePDF from '../../assets/Happi_CV.pdf'
+
 const About = () => {
 
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -27,9 +29,18 @@ const About = () => {
                 idx={15}
                />
             </h1>
-            <p>I am a software developer with a passion for creating innovative solutions.</p>
-            <p>I have experience in various programming languages and frameworks.</p>
-            <p>Feel free to reach out if you'd like to collaborate!</p>
+            <p>
+              I am an <strong>AI Builder</strong>, <strong>LLM & Automation Developer</strong>, and <strong>Full-Stack Engineer</strong> with hands-on experience shipping production-grade applications from API integration to cloud deployment.
+            </p>
+            <p>
+              Fluent across <strong>Python</strong>, <strong>JavaScript / TypeScript</strong>, <strong>FastAPI</strong>, and <strong>React / Next.js</strong>, I specialize in wiring APIs, databases, and AI models into high-performance, real-world tools.
+            </p>
+            <p>
+              My background covers dialogue/agent systems, NLP pipelines, full-stack PWAs with offline architecture, and secure database design.
+            </p>
+            <div style={{ marginTop: '25px' }}>
+              <a href={ResumePDF} download="Happi_Resume.pdf" className="flat-button">DOWNLOAD CV</a>
+            </div>
           </div>
 
           <div className='stage-cube-cont'>
